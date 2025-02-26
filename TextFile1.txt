@@ -1,0 +1,25 @@
+Incapsulate HTML element´attributes for resusing:
+
+// In your .cs file or wherever you manage your shared resources
+public static class SharedAttributes
+{
+    public static readonly Dictionary<string, object> PasswordAttributes = new()
+    {
+        { "autocomplete", "current-password" },
+        { "aria-required", "true" }
+    };
+}
+
+// In your Razor component
+<MudItem md="12">
+    <MudStaticTextField
+        For="@(() => Input.Password)" @bind-Value="Input.Password" 
+        Label="Password" 
+        InputType="InputType.Password" 
+        Placeholder="password" 
+        UserAttributes="SharedAttributes.PasswordAttributes" />
+</MudItem>
+
+
+If you want the driver to run on a specific port:
+https://www.selenium.dev/documentation/webdriver/drivers/service/
