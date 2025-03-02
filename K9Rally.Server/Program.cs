@@ -28,8 +28,8 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-    var connectionString = builder.Configuration.GetConnectionString("SQLiteConnection") ??
-        throw new InvalidOperationException("Connection string 'SQLiteConnection' not found.");
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
+        throw new InvalidOperationException("Connection string not found.");
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlite(connectionString));
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();

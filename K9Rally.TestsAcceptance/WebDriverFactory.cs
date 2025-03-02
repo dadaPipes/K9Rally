@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿/*
+ * using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -37,3 +38,4 @@ public static class WebDriverFactory
         return new EdgeDriver();
     }
 }
+*/

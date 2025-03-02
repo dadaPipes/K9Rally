@@ -1,0 +1,7 @@
+docker ps                                            => running containers
+docker ps -a                                         => all containers
+docker images                                        => list of images
+docker logs <container>                              => logs of a container
+docker network ls                                    => list of networks
+docker network inspect <network>                     => inspect a network
+docker exec -it <container-name> ping <container-ip> => ping from a container (confirm whether the containers can communicate over the network) (can use either name or ip)

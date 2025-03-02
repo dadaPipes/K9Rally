@@ -1,11 +1,7 @@
-﻿using Xunit.Abstractions;
-
-namespace K9Rally.Tests.Acceptance.Infrastructure;
+﻿namespace K9Rally.Tests.Acceptance.Infrastructure;
 
 public sealed class K9RallyServerImage : IImage, IAsyncLifetime
 {
-    readonly ITestOutputHelper? output = null;
-
     public const ushort HttpsPort = 443;
 
     public const string CertificateFilePath = "certificate.crt";
@@ -28,7 +24,6 @@ public sealed class K9RallyServerImage : IImage, IAsyncLifetime
 
         try
         {
-            output?.WriteLine("Building Docker image...");
 
             await new ImageFromDockerfileBuilder()
               .WithName(this)
@@ -39,13 +34,6 @@ public sealed class K9RallyServerImage : IImage, IAsyncLifetime
               .Build()
               .CreateAsync()
               .ConfigureAwait(false);
-
-            output?.WriteLine($"Image built successfully: {_image.FullName}");
-        }
-        catch (Exception ex)
-        {
-            output?.WriteLine($"Error building image: {ex}");
-            throw;
         }
         finally
         {
